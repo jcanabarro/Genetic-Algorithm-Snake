@@ -1,7 +1,12 @@
 # Genetic-Algorithm-Snake
-Genetic Algorithm for Snake Game Agent. Goal is to fill up the entire screen.
+
+Algoritmo genético do clássico "jogo da cobrinha".
+
+O objetivo é preencher toda a tela.
 ![Alt Text](./snake.gif)
 
-Snake game is a simple game in which the player moves the head of the snake up, down, right or left to eat a randomly generated food. The snake grows its size by one every time it eats the food, and the snake dies once it hits any part of its body. This project is about training an utility-based snake game agent using a genetic algorithm with a number of heuristics. <br>
+Em um jogo clássico da cobrinha, o usuário deve mover a mesma pegando a comida que aparece aleatoriamente na tela. As possíveis ações são ESQUERDA, DIREITA, CIMA E BAIXO. A cobrinha morre quando encosta em seu próprio corpo. A cobrinha cresce sempre que come.
 
-More info can be found in my blog post. https://han-gyeol.github.io//2017/07/08/Game-AI-Snake-Game/
+Neste projeto, foca-se no treinamento de um jogo da cobrinha baseado em utilidade utilizando algoritmo genético com heurística.
+
+Fork de [han-gyeol](https://github.com/han-gyeol/Genetic-Algorithm-Snake)
