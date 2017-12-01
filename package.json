@@ -1,0 +1,29 @@
+{
+  "name": "genetic-algorithm-snake",
+  "version": "1.0.0",
+  "description": "A genetic algorithm snake game.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcanabarro/Genetic-Algorithm-Snake.git"
+  },
+  "keywords": [
+    "genetic",
+    "algorithms",
+    "snake",
+    "game",
+    "canvas"
+  ],
+  "author": "han-gyeol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcanabarro/Genetic-Algorithm-Snake/issues"
+  },
+  "homepage": "https://github.com/jcanabarro/Genetic-Algorithm-Snake#readme",
+  "dependencies": {
+    "p5": "^0.5.16"
+  }
+}
