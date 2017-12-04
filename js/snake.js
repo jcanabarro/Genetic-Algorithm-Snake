@@ -118,42 +118,36 @@ function Snake (x, y, xSpeed, ySpeed, total, tail, weights, eatCount) {
     this.pickDir = function () {
         let bestFitness = Number.NEGATIVE_INFINITY;
         let fitness;
-        let dir = -1;
-        // let nextPos = createVector(-1, -1);
-        let ds = new Snake(this.x, this.y, 1, 0, this.total, this.tail, this.weights, this.eatCount);
-        ds.update();
-        fitness = ds.heuristic.calculateFitness();
+        let nextDirection = -1;
+        let temporarySnake = new Snake(this.x, this.y, 1, 0, this.total, this.tail, this.weights, this.eatCount);
+        temporarySnake.update();
+        fitness = temporarySnake.heuristic.calculateFitness();
         if (bestFitness < fitness) {
             bestFitness = fitness;
-            dir = 0;
-            // nextPos = createVector(this.x + scale, this.y);
+            nextDirection = RIGHT;
         }
-        ds = new Snake(this.x, this.y, -1, 0, this.total, this.tail, this.weights, this.eatCount);
-        ds.update();
-        fitness = ds.heuristic.calculateFitness();
+        temporarySnake = new Snake(this.x, this.y, -1, 0, this.total, this.tail, this.weights, this.eatCount);
+        temporarySnake.update();
+        fitness = temporarySnake.heuristic.calculateFitness();
         if (bestFitness < fitness) {
             bestFitness = fitness;
-            dir = 1;
-            // nextPos = createVector(this.x - scale, this.y);
+            nextDirection = LEFT;
         }
-        ds = new Snake(this.x, this.y, 0, 1, this.total, this.tail, this.weights, this.eatCount);
-        ds.update();
-        fitness = ds.heuristic.calculateFitness();
+        temporarySnake = new Snake(this.x, this.y, 0, 1, this.total, this.tail, this.weights, this.eatCount);
+        temporarySnake.update();
+        fitness = temporarySnake.heuristic.calculateFitness();
         if (bestFitness < fitness) {
             bestFitness = fitness;
-            dir = 2;
-            // nextPos = createVector(this.x, this.y + scale);
+            nextDirection = UP;
         }
-        ds = new Snake(this.x, this.y, 0, -1, this.total, this.tail, this.weights, this.eatCount);
-        ds.update();
-        fitness = ds.heuristic.calculateFitness();
+        temporarySnake = new Snake(this.x, this.y, 0, -1, this.total, this.tail, this.weights, this.eatCount);
+        temporarySnake.update();
+        fitness = temporarySnake.heuristic.calculateFitness();
         if (bestFitness < fitness) {
-            // bestFitness = fitness;
-            dir = 3;
-            // nextPos = createVector(this.x, this.y - scale);
+            nextDirection = DOWN;
         }
 
-        return dir;
+        return nextDirection;
     };
 
     const RIGHT = 0;
