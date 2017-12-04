@@ -24,7 +24,7 @@ let playCount;
 
 let sumFitness;
 
-let gamesEachPopulation = 3;
+let gamesEachPopulation = 2;
 
 let bestFitness;
 
@@ -48,9 +48,9 @@ function start () {
 }
 
 function endGeneration () {
-    console.log('BEST FITNESS : ' + bestFitness);
-    console.log('BEST WEIGHTS : ' + population[ bestIdx ].weights);
-    console.log('GENERATING NEXT GENERATION...');
+    console.log('MELHOR FITNESS : ' + bestFitness);
+    console.log('MELHORES PESOS : ' + population[ bestIdx ].weights);
+    console.log('GERANDO NOVA GERAÇÃO...');
     nextGeneration();
     currentPopulation = 0;
     s = population[ currentPopulation ];
@@ -78,6 +78,7 @@ function playAgain () {
 }
 
 function initPopulation () {
+    document.getElementById('lifes').textContent = gamesEachPopulation + 1;
     for (let i = 0; i < popSize; i++) {
         let weights = [ random(-1, 0), random(-1, 0), random(-1, 1), random(-1, 0), random(-1, 0) ];
         population.push(new Snake(0, 0, 0, 0, 0, [], weights, 0));
@@ -121,16 +122,19 @@ function draw () {
     s.show();
     fill(255, 0, 100);
     rect(food.x, food.y, scale, scale);
-    if (s.death() || noWhereToGo === true) {
+    if (s.death() || noWhereToGo) {
         let roundOver = false;
+        document.getElementById('lifes').textContent = gamesEachPopulation - playCount;
         if (playCount === gamesEachPopulation) {
             fitness[ currentPopulation ] = sumFitness / gamesEachPopulation;
             if (fitness[ currentPopulation ] < 0) {
                 fitness[ currentPopulation ] = 0;
             }
-            console.log('GAME OVER: ' + currentPopulation);
-            console.log('WEIGHTS: ' + population[ currentPopulation ].weights);
-            console.log('Fitness = ' + fitness[ currentPopulation ]);
+            document.getElementById('games').textContent = currentPopulation + 1;
+            document.getElementById('lifes').textContent = gamesEachPopulation + 1;
+            console.log('PERDEU');
+            console.log('PESOS: ' + population[ currentPopulation ].weights);
+            console.log('FITNESS = ' + fitness[ currentPopulation ].toFixed(3));
             sumFitness = 0;
             playCount = 0;
 
@@ -142,9 +146,9 @@ function draw () {
         }
         roundOver ? nextSnake() : playAgain();
     } else if (s.end()) {
-        console.log('GAME COMPLETE: ' + currentPopulation);
+        console.log('VENCEU!');
         fitness[ currentPopulation ] = s.tail.length + (frameCount - s.birthtime) / (cols * rows * -0.5);
-        console.log('Fitness = ' + fitness[ currentPopulation ]);
+        console.log('FITNESS = ' + fitness[ currentPopulation ].toFixed(3));
         if (currentPopulation === population.length - 1) {
             endGeneration();
         } else {

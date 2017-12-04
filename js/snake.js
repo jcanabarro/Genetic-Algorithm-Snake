@@ -11,11 +11,6 @@ function Snake (x, y, xSpeed, ySpeed, total, tail, weights, eatCount) {
         return false;
     };
 
-    this.dir = function (x, y) {
-        this.xSpeed = x;
-        this.ySpeed = y;
-    };
-
     this.death = function () {
         let die = false;
         if (this.x === scale * -1 || this.x === width ||
@@ -94,7 +89,7 @@ function Snake (x, y, xSpeed, ySpeed, total, tail, weights, eatCount) {
         if (this.nextDirection(dir)) {
             return true;
         }
-        if (this.total === this.tail.length) {   //didnt eat food
+        if (this.total === this.tail.length) {   // ñ comeu
             for (let i = 0; i < this.tail.length - 1; i++) {
                 this.tail[ i ] = this.tail[ i + 1 ];
             }
