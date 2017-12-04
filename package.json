@@ -17,13 +17,18 @@
     "game",
     "canvas"
   ],
-  "author": "han-gyeol",
+  "authors": [
+    "han-gyeol",
+    "jcanabarro",
+    "luizguilhermefr"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jcanabarro/Genetic-Algorithm-Snake/issues"
   },
   "homepage": "https://github.com/jcanabarro/Genetic-Algorithm-Snake#readme",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "p5": "^0.5.16"
   }
 }
