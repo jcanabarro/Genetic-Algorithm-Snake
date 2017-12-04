@@ -5,10 +5,9 @@ function Snake (x, y, xSpeed, ySpeed, total, tail, weights, eatCount) {
         if (d < 1) {
             this.total++;
             this.eatCount = 0;
-            return true;
+            return { hasEat: true, total: this.total };
         }
-
-        return false;
+        return { hasEat: false, total: this.total };
     };
 
     this.death = function () {
@@ -20,12 +19,12 @@ function Snake (x, y, xSpeed, ySpeed, total, tail, weights, eatCount) {
             die = true;
         } else {
             this.tail.every(function (t) {
-               let d = dist(this.x, this.y, t.x, t.y);
-               if (d < 1) {
-                   die = true;
-                   return false;
-               }
-               return true;
+                let d = dist(this.x, this.y, t.x, t.y);
+                if (d < 1) {
+                    die = true;
+                    return false;
+                }
+                return true;
             }.bind(this));
         }
 

@@ -115,7 +115,9 @@ function pickLocation () {
 
 function draw () {
     background(51);
-    if (s.eat(food)) {
+    let eat = s.eat(food);
+    document.getElementById('score').textContent = eat.total + 1;
+    if (eat.hasEat) {
         pickLocation();
     }
     let noWhereToGo = s.makeMove(s.pickDir());
